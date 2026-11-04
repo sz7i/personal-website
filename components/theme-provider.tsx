@@ -15,7 +15,7 @@ function ThemeProvider({
       disableTransitionOnChange
       {...props}
     >
-      <ThemeHotkey />
+      {process.env.NODE_ENV === "development" && <ThemeHotkey />}
       {children}
     </NextThemesProvider>
   )
