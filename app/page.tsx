@@ -1,14 +1,15 @@
 import Image from "next/image"
 
+import { CurrentYear } from "@/components/site/current-year"
+import { EmailText } from "@/components/site/email-text"
 import { PricingTable } from "@/components/site/pricing-table"
 import { SectionHeading } from "@/components/site/section-heading"
 import { SiteHeader } from "@/components/site/site-header"
+import { ThemeToggle } from "@/components/site/theme-toggle"
 import { WorkGrid } from "@/components/site/work-grid"
 import { intro, pricing, site, work } from "@/lib/site"
 
 export default function Page() {
-  const year = new Date().getFullYear()
-
   return (
     <>
       <a
@@ -24,7 +25,7 @@ export default function Page() {
         <section
           id="top"
           aria-labelledby="intro-heading"
-          className="grid scroll-mt-16 grid-cols-1 items-end gap-12 pt-16 pb-24 md:grid-cols-12 md:gap-10 md:pt-28 md:pb-36"
+          className="grid scroll-mt-24 grid-cols-1 items-end gap-12 pt-16 pb-24 md:scroll-mt-16 md:grid-cols-12 md:gap-10 md:pt-28 md:pb-36"
         >
           <div className="md:col-span-7">
             <p className="mb-8 text-xs tracking-[0.2em] text-muted-foreground uppercase">
@@ -72,7 +73,7 @@ export default function Page() {
         {/* Work */}
         <section
           aria-labelledby="work-heading"
-          className="scroll-mt-16 pb-28 md:pb-40"
+          className="scroll-mt-24 pb-28 md:scroll-mt-16 md:pb-40"
           id="work"
         >
           <SectionHeading index="01" id="work-heading">
@@ -87,7 +88,7 @@ export default function Page() {
         <section
           id="about"
           aria-labelledby="about-heading"
-          className="scroll-mt-16 pb-28 md:pb-40"
+          className="scroll-mt-24 pb-28 md:scroll-mt-16 md:pb-40"
         >
           <SectionHeading index="02" id="about-heading">
             What I shoot
@@ -108,7 +109,7 @@ export default function Page() {
         <section
           id="pricing"
           aria-labelledby="pricing-heading"
-          className="scroll-mt-16 pb-28 md:pb-40"
+          className="scroll-mt-24 pb-28 md:scroll-mt-16 md:pb-40"
         >
           <SectionHeading index="03" id="pricing-heading">
             Pricing
@@ -133,7 +134,7 @@ export default function Page() {
         <section
           id="contact"
           aria-labelledby="contact-heading"
-          className="scroll-mt-16 pb-24 md:pb-32"
+          className="scroll-mt-24 pb-24 md:scroll-mt-16 md:pb-32"
         >
           <SectionHeading index="04" id="contact-heading">
             Contact
@@ -146,9 +147,9 @@ export default function Page() {
             <div className="md:col-span-8">
               <a
                 href={`mailto:${site.email}`}
-                className="font-heading text-[clamp(1.75rem,5.5vw,4.5rem)] leading-none tracking-tight break-all underline decoration-foreground/20 decoration-1 underline-offset-[0.18em] transition-colors hover:decoration-foreground"
+                className="font-heading text-[clamp(1.75rem,5.5vw,4.5rem)] leading-none tracking-tight break-words underline decoration-foreground/20 decoration-1 underline-offset-[0.18em] transition-colors hover:decoration-foreground"
               >
-                {site.email}
+                <EmailText email={site.email} />
               </a>
               <p className="mt-6 text-sm text-muted-foreground">
                 Elsewhere:{" "}
@@ -167,12 +168,15 @@ export default function Page() {
       <footer className="border-t border-foreground/10">
         <div className="mx-auto flex max-w-6xl flex-col justify-between gap-3 px-6 py-8 text-xs text-muted-foreground sm:flex-row md:px-10">
           <p>
-            © {year} {site.name}. All photographs are the property of the
-            photographer.
+            © <CurrentYear /> {site.name}. All photographs are the property of
+            the photographer.
           </p>
-          <a href={`mailto:${site.email}`} className="hover:text-foreground">
-            {site.email}
-          </a>
+          <div className="flex items-center gap-6">
+            <a href={`mailto:${site.email}`} className="hover:text-foreground">
+              {site.email}
+            </a>
+            <ThemeToggle className="underline decoration-foreground/30 underline-offset-4 hover:text-foreground hover:decoration-foreground" />
+          </div>
         </div>
       </footer>
     </>

@@ -117,7 +117,8 @@ export const work: Photo[] = [
 export type Package = {
   name: string
   price: string
-  unit: string
+  /** "from" renders before the price; any other unit renders after it. */
+  unit: "from" | "per day" | "per hour"
   summary: string
   includes: string[]
 }

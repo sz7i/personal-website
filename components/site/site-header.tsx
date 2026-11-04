@@ -10,15 +10,18 @@ const links = [
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-foreground/10 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6 md:px-10">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-6 py-3 md:h-16 md:flex-nowrap md:px-10 md:py-0">
         <a
           href="#top"
           className="font-heading text-xl tracking-tight whitespace-nowrap"
         >
           {site.name}
         </a>
-        <nav aria-label="Main" className="hidden md:block">
-          <ul className="flex items-center gap-8 text-[0.8rem] tracking-wide text-muted-foreground">
+        <nav
+          aria-label="Main"
+          className="order-last w-full md:order-none md:w-auto"
+        >
+          <ul className="flex items-center gap-6 text-[0.8rem] tracking-wide text-muted-foreground md:gap-8">
             {links.map((link) => (
               <li key={link.href}>
                 <a

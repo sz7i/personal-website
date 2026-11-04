@@ -25,10 +25,10 @@ export function WorkGrid({ photos }: { photos: Photo[] }) {
 
   return (
     <ul className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 md:gap-y-20">
-      {items.map(({ photo, landscape, offset }) => {
+      {items.map(({ photo, landscape, offset }, i) => {
         return (
           <li
-            key={photo.src}
+            key={`${i}-${photo.src}`}
             className={cn(landscape && "md:col-span-2", offset && "md:mt-24")}
           >
             <figure>
@@ -38,6 +38,7 @@ export function WorkGrid({ photos }: { photos: Photo[] }) {
                   alt={photo.alt}
                   width={photo.width}
                   height={photo.height}
+                  quality={85}
                   sizes={
                     landscape
                       ? "(min-width: 1152px) 1072px, 100vw"

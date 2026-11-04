@@ -12,7 +12,7 @@ pnpm build      # production build
 pnpm lint && pnpm typecheck
 ```
 
-Press <kbd>d</kbd> to toggle dark mode.
+In development, press <kbd>d</kbd> to toggle dark mode. Visitors use the "Dark mode" / "Light mode" switch in the footer.
 
 ## Editing content
 
