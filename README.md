@@ -12,6 +12,14 @@ pnpm build      # production build
 pnpm lint && pnpm typecheck
 ```
 
+Opening the dev server from another device or via a hostname other than
+`localhost` (e.g. `http://my-laptop:3000`)? Allow that host in a gitignored
+`.env.local`, then restart `pnpm dev`:
+
+```bash
+DEV_ORIGINS=my-laptop        # comma-separated for several hosts
+```
+
 In development, press <kbd>d</kbd> to toggle dark mode. Visitors use the "Dark mode" / "Light mode" switch in the footer.
 
 ## Editing content

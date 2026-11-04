@@ -1,13 +1,13 @@
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  // `next dev` blocks its JS/HMR resources for any host other than localhost,
-  // which leaves the page un-hydrated (buttons do nothing) when it is opened
-  // via the machine name. Extra hosts: DEV_ORIGINS="host1,host2".
-  allowedDevOrigins: [
-    "lenovo",
-    ...(process.env.DEV_ORIGINS?.split(",").map((h) => h.trim()) ?? []),
-  ].filter(Boolean),
+  // `next dev` only serves its JS/HMR resources to localhost; opening it via
+  // a machine name leaves the page un-hydrated (buttons do nothing). List extra
+  // hosts in DEV_ORIGINS, e.g. DEV_ORIGINS=my-laptop in a gitignored .env.local.
+  allowedDevOrigins:
+    process.env.DEV_ORIGINS?.split(",")
+      .map((h) => h.trim())
+      .filter(Boolean) ?? [],
   images: {
     // Placeholder photography is served from picsum.photos.
     // Remove this once every image in lib/site.ts points at your own files in /public.
